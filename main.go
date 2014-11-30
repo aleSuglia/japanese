@@ -8,6 +8,12 @@ import (
 	"os"
 )
 
+/**
+This is a specific example of how to use the function written
+in order to retrieve and save all the pubblication in a simple ".bib"
+file.
+*/
+
 func main() {
 
 	for i := 9; i <= 15; i++ {

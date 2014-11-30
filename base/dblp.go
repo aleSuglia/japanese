@@ -6,6 +6,7 @@ import (
 	"io/ioutil"
 )
 
+// Definition of the JSON structures
 type titleType struct {
 	Ee   string `json:"@ee"`
 	Text string `json:"text"`
@@ -38,6 +39,8 @@ type DBLPEntry struct {
 type DBLPList struct {
 	HitsList []DBLPEntry `json:"hit"`
 }
+
+// End definitions
 
 /**
 Given a filename of the specific file which contains the results from DBLP

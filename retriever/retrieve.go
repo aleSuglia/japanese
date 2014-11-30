@@ -26,6 +26,13 @@ type Downloader interface {
 	Download() (string, error)
 }
 
+/**
+Downloads the specific BibTex entry from the specified URL.
+An error is returned if something is wrong during the download and
+if the DBLP website doesn't accept any other request, the last parameter
+represents the number of seconds that you need to wait before any
+other request will be accepted.
+*/
 func downloadBib(basicUrl string) (string, error, int64) {
 	bibRealURL, errUrl := getCorrectBibtex(basicUrl)
 
@@ -61,6 +68,11 @@ func downloadBib(basicUrl string) (string, error, int64) {
 
 }
 
+/**
+Gets the specific URL which contains the BibTex representation
+for the given pubblication from the URL of the page that contains it.
+An error is returned if the download process is wrong.
+*/
 func getCorrectBibtex(bibURL string) (string, error) {
 	var urlTag, innetText string = "a", "download as .bib file"
 
@@ -104,6 +116,14 @@ func getCorrectBibtex(bibURL string) (string, error) {
 
 }
 
+/**
+Parses the specified string and returns only the first
+bib element (of two of them are specified, only the first one represents
+an article or a pubblication).
+
+An error is returned if something is wrong in the specified content.
+
+*/
 func getFirstRef(bibRef string) (string, error) {
 	atSign := strings.Index(bibRef, "@")
 	if atSign == -1 {
@@ -122,6 +142,12 @@ func getFirstRef(bibRef string) (string, error) {
 
 }
 
+/**
+Given a list of DBLP pubblication returns a single string which contains
+the whole ".bib" file.
+
+The error is not "nil" if one of the entries generates an error.
+*/
 func DownloadEntryList(dblpList *base.DBLPList) (string, error) {
 	completeFile := ""
 

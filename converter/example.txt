@@ -1,0 +1,32 @@
+{ "hit" : 
+[
+{
+      "@score": "16",
+      "@id": "1648072",
+      "info": {
+        "authors": {
+          "author": [
+            "Pierpaolo Basile",
+            "Cataldo Musto",
+            "Marco de Gemmis",
+            "Pasquale Lops",
+            "Fedelucio Narducci",
+            "Giovanni Semeraro"
+          ]
+        },
+        "title": {
+          "@ee": "http://dx.doi.org/10.1007/978-3-319-12024-9_21",
+          "text": "Content-Based Recommender Systems + DBpedia Knowledge = Semantics-Aware Recommender Systems. "
+        },
+        "venue": {
+          "@url": "db/conf/esws/semwebeval2014.html#BasileMGLNS14",
+          "@conference": "SemWebEval@ESWC",
+          "@pages": "163-169",
+          "text": "SemWebEval@ESWC 2014:163-169"
+        },
+        "year": "2014",
+        "type": "inproceedings"
+      },
+      "url": "http://www.dblp.org/rec/bibtex/conf/esws/BasileMGLNS14"
+    }]
+    }
