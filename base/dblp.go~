@@ -1,0 +1,64 @@
+package base
+
+import (
+	"encoding/json"
+	"io/ioutil"
+)
+
+type titleType struct {
+	Ee   string `json:"@ee"`
+	Text string `json:"text"`
+}
+
+type venueType struct {
+	Url        string `json:"@url"`
+	Conference string `json:"@conference"`
+	Pages      string `json:"@pages"`
+	Text       string `json:"text"`
+}
+
+type InfoEntry struct {
+	Authors struct {
+		Author []string `json:"author"`
+	} `json:"authors"`
+	Title       titleType         `json:"title"`
+	Venue       map[string]string `json:"venue"`
+	Year        string            `json:"year"`
+	ArticleType string            `json:"type"`
+}
+
+type DBLPEntry struct {
+	Score string    `json:"@score"`
+	Id    string    `json:"@id"`
+	Info  InfoEntry `json:"info"`
+	Url   string    `json:"url"`
+}
+
+type DBLPList struct {
+	HitsList []DBLPEntry `json:"hit"`
+}
+
+/**
+Given a filename of the specific file which contains the results from DBLP
+in JSON format, it extracts a list of structured record that can be
+easily manipulated by the program. In case of error, the function returns
+a second value that it's not nil.
+*/
+func RetrieveDBLPList(jsonFileName string) (DBLPList, error) {
+	var dblpEntries DBLPList
+
+	fileContent, readError := ioutil.ReadFile(jsonFileName)
+
+	if readError != nil {
+		return DBLPList{}, readError
+	}
+
+	errJson := json.Unmarshal(fileContent, &dblpEntries)
+
+	if errJson != nil {
+		return DBLPList{}, errJson
+	}
+
+	return dblpEntries, nil
+
+}
